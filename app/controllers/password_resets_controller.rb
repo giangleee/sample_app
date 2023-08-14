@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
-  before_action :find_user_base_email, :valid_user, :check_expiration, only: %i(edit update)
+  before_action :find_user_base_email, :valid_user, :check_expiration,
+                only: %i(edit update)
 
   def new; end
 
@@ -19,7 +20,7 @@ class PasswordResetsController < ApplicationController
   def edit; end
 
   def update
-    if params.dig(:user, :password)&.empty?
+    if params.dig(:user, :password) && params.dig(:user, :password).empty?
       @user.errors.add(:password, t("can_not_be_empty"))
       render :edit, status: :unprocessable_entity
     elsif @user.update(user_params) # Case 4
