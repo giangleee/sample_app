@@ -37,7 +37,7 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 
-/test/*
+/test
 node_modules/*
 .solargraph.yml
 config/definitions.rb
