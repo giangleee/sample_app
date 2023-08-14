@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
-    @micropost = current_user.microposts.build(micropost_params)
+    @micropost = current_user.microposts.build micropost_params
 
     if save_micropost
       flash[:success] = t("micropost_created").capitalize
@@ -36,13 +36,13 @@ class MicropostsController < ApplicationController
     redirect_to (request.referer || root_path), status: :see_other
   end
 
-  def save_micropost
-    @micropost.image.attach(params[:micropost][:image])
-    @micropost.save
-  end
-
   def handle_failed_creation
     @feed_items = current_user.feed.paginate(page: params[:page])
     render "static_pages/home", status: :unprocessable_entity
+  end
+
+  def save_micropost
+    @micropost.image.attach(params[:micropost][:image])
+    @micropost.save
   end
 end
