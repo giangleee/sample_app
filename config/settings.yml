@@ -14,3 +14,5 @@ validate:
  password:
   length:
    min: 6
+digits:
+ length_30: 30

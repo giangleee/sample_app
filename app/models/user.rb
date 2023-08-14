@@ -2,7 +2,6 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   before_save {downcase_email}
-
   validates :name, presence: true,
             length: {maximum: Settings.validate.name.length.max}
 
@@ -22,7 +21,7 @@ class User < ApplicationRecord
              else
                BCrypt::Engine.cost
              end
-      BCrypt::Password.create string_param, cost
+      BCrypt::Password.create(string_param, cost:)
     end
 
     # Returns a random token
