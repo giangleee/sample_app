@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
 
   def create
     reset_session
-    if @user.authenticate(params[:session][:password])
+    if @user.activated?
       activate_user_create @user
     else
-      flash.now[:danger] = t "users.create.session.failed"
+      flash.now[:danger] = t "user_mailer.account_activation.invalid"
       render :new, status: :unprocessable_entity
     end
   end

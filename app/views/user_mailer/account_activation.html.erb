@@ -1,0 +1,7 @@
+<h1><%= t("Sample_App") %></h1>
+<p><%= t("hello") %> <%= @user.name %>, </p>
+<p>
+  <%= t("email_content") %>
+</p>
+<%= link_to t("activate"), edit_account_activation_url(id: @user.activation_token,
+                                                       email: @user.email) %>

@@ -28,6 +28,7 @@ en:
    failed: "Have some errors occur"
    session:
     failed: "Invalid email/password combination"
+   activate: "Please check your email to activate your account."
   show:
    user_not_found: "User not found!"
   update:
@@ -68,3 +69,23 @@ en:
    title: "Log in"
    new_user: "New user?"
    remember: "Remember me on this computer"
+  create:
+   not_activated: "Account not activated. Check your email for activation link."
+ user_mailer:
+  account_activation:
+   subject: "Account activation"
+   greeting: "Hi"
+   header: "Welcome to the Sample App! Click on the link below to activate your account:"
+   activate: "Activate"
+   success: "Account activated!"
+   fail: "Invalid activation link"
+   invalid: "Invalid email/password combination"
+ activate: "Activate"
+ account_activated: "Account activated!"
+ invalid_activation_link: "Invalid activation link"
+ account_not_activated: "Account not activated. "
+ check_your_email_for_the_activation_link: "Check your email for the activation link."
+ please_check_your_email_to_activate_your_account: "Please check your email to activate your account."
+ email_content: "Welcome to the Sample App! Click on the link below to activate your account:"
+ account_activation: "Account activation"
+ hello: "Hi"

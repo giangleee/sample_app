@@ -80,6 +80,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.4)
+    byebug (11.1.3)
     capybara (3.39.2)
       addressable
       matrix
@@ -136,6 +137,8 @@ GEM
     faker (2.22.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -307,10 +310,12 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   bootstrap-sass (= 3.4.1)
+  byebug (~> 11.1)
   capybara
   config
   debug
   faker
+  figaro (~> 1.1, >= 1.1.1)
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
