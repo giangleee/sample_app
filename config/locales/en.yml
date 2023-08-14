@@ -17,6 +17,23 @@ en:
  users:
   new:
    label: "Sign up"
+   title: "Sign up"
+   description: "This will be a signup page for new users."
+   submit: "Create my account"
+   name: "Name"
+   password: "Password"
+   confirmation: "Confirmation"
+  create:
+   success: "Welcome to Sample App!"
+   failed: "Have some errors occur"
+  show:
+   user_not_found: "User not found!"
+  update:
+   success: "Profile updated"
+  delete:
+   success: "User deleted"
+  log_in:
+   success: "Please log in."
  layouts:
   header:
    title: "Ruby on Rails Tutorial Sample App"
