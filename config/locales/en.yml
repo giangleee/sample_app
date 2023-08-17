@@ -26,6 +26,8 @@ en:
   create:
    success: "Welcome to Sample App!"
    failed: "Have some errors occur"
+   session:
+    failed: "Invalid email/password combination"
   show:
    user_not_found: "User not found!"
   update:
@@ -38,6 +40,12 @@ en:
   header:
    title: "Ruby on Rails Tutorial Sample App"
    signIn: "Log in"
+   signUp: "Sign up now!"
+   nav: "Toggle navigation"
+   account: "Account"
+   profile: "Profile"
+   setting: "Setting"
+   logout: "Logout"
   footer:
    description: The <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a> by <a href="https://www.michaelhartl.com/">Michael Hartl</a>
    new: "News"
