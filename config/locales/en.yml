@@ -51,3 +51,8 @@ en:
    new: "News"
   application:
    title: "Ruby on Rails Tutorial Sample App"
+ sessions:
+  new:
+   title: "Log in"
+   new_user: "New user?"
+   remember: "Remember me on this computer"

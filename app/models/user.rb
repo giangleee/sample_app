@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  before_save :downcase_email
+  attr_accessor :remember_token
+
+  before_save {downcase_email}
 
   validates :name, presence: true,
             length: {maximum: Settings.validate.name.length.max}
@@ -22,6 +24,36 @@ class User < ApplicationRecord
              end
       BCrypt::Password.create string_param, cost
     end
+
+    # Returns a random token
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+  end
+
+  # Remembers a user in the database for use in persistent sessions.
+  def remember
+    self.remember_token = User.new_token
+    update_column :remember_digest, User.digest(remember_digest)
+    remember_digest
+  end
+
+  # Returns true if the given token matches the digest.
+  def authenticated? remember_token
+    return false unless remember_digest.nil?
+
+    BCrypt::Password.new(remember_digest).is_password? remember_token
+  end
+
+  # Forgets a user.
+  def forget
+    update_column :remember_digest, nil
+  end
+
+  # Returns a session token to prevent session hijacking.
+  # We reuse the remember digest for convenience.
+  def session_token
+    remember_digest || remember
   end
 
   private
