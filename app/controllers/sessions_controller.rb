@@ -1,16 +1,14 @@
 class SessionsController < ApplicationController
-  before_action :find_user, only: [:create]
+  before_action :find_user_base_session, only: :create
 
   def new; end
 
   def create
     reset_session
-    if @user&.authenticate(params[:session][:password])
-      params[:session][:remember_me] == "1" ? remember(@user) : forget(@user)
-      log_in @user
-      redirect_to @user
+    if @user.authenticate(params[:session][:password])
+      activate_user_create @user
     else
-      flash.now[:danger] = I18n.t "users.create.session.failed"
+      flash.now[:danger] = t "users.create.session.failed"
       render :new, status: :unprocessable_entity
     end
   end
@@ -22,12 +20,11 @@ class SessionsController < ApplicationController
 
   private
 
-  def find_user
-    user = User.find_by email: params.dig(:session, :email)&.downcase
-    if user.is_a? NilClass
-      flash.now[:danger] = I18n.t "users.show.user_not_found"
-    else
-      @user = user
-    end
+  def find_user_base_session
+    @user = User.find_by email: params.dig(:session, :email)&.downcase
+    return if @user
+
+    flash[:danger] = t "users.show.user_not_found"
+    redirect_to action: :new
   end
 end

@@ -36,6 +36,17 @@ en:
    success: "User deleted"
   log_in:
    success: "Please log in."
+  user:
+   delete_confirm: "You sure?"
+   delete: "delete"
+  destroy:
+   recordNotFound: "Record was already destroyed"
+   recordCanNotDestroy: "Record was not destroyed"
+  index:
+   title: "All users"
+  edit:
+   title: "Update your profile"
+   email_text: "change"
  layouts:
   header:
    title: "Ruby on Rails Tutorial Sample App"
@@ -46,6 +57,7 @@ en:
    profile: "Profile"
    setting: "Setting"
    logout: "Logout"
+   users: "Users"
   footer:
    description: The <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a> by <a href="https://www.michaelhartl.com/">Michael Hartl</a>
    new: "News"
