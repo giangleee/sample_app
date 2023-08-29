@@ -43,3 +43,5 @@ node_modules/*
 config/definitions.rb
 config/rails-solagraph.rb
 config/.editorconfig
+
+/config/application.yml

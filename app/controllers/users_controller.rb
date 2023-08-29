@@ -18,10 +18,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = t "users.create.success"
+      @user.send_activation_email
       reset_session
-      log_in @user
-      redirect_to @user
+      flash[:info] = t "users.create.activate"
+      redirect_to root_url
     else
       render :new, status: :unprocessable_entity
     end
@@ -58,8 +58,7 @@ class UsersController < ApplicationController
   def correct_user
     return if @user == current_user
 
-    redirect_to(root_url,
-                status: :see_other)
+    redirect_to root_url, status: :see_other
   end
 
   # Confirms an admin user.
