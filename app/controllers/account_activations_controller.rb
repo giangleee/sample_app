@@ -12,14 +12,4 @@ class AccountActivationsController < ApplicationController
       redirect_to root_url
     end
   end
-
-  private
-
-  def find_user_base_email
-    @user = User.find_by email: params[:email]
-
-    return if @user
-    redirect_to :root,
-                flash: {warning: t("users.show.user_not_found")}
-  end
 end

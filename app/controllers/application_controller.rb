@@ -17,4 +17,13 @@ class ApplicationController < ActionController::Base
   def default_url_options
     {locale: I18n.locale}
   end
+
+  def find_user_base_email
+    @user = User.find_by email: params[:email]
+
+    return if @user
+
+    redirect_to :root,
+                flash: {warning: t("users.show.user_not_found")}
+  end
 end
