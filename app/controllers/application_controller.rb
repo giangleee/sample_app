@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, status: :see_other
   end
 
+  def find_user
+    @user = User.find_by id: params[:id] || params[:user_id]
+    return if @user
+
+    redirect_to :root,
+                flash: {warning: t("users.show.user_not_found")}
+  end
+
   private
 
   def set_locale
