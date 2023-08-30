@@ -13,7 +13,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show; end
+  def show
+    @microposts = @user.microposts.paginate(page: params[:page])
+  end
 
   def create
     @user = User.new user_params
@@ -72,14 +74,5 @@ class UsersController < ApplicationController
 
     redirect_to :root,
                 flash: {warning: t("users.show.user_not_found")}
-  end
-
-  # Confirms a logged-in user.
-  def logged_in_user
-    return if logged_in?
-
-    store_location
-    flash[:danger] = t "users.log_in.success"
-    redirect_to login_url, status: :see_other
   end
 end
